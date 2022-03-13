@@ -56,14 +56,14 @@ public class UserService {
         return myHash;
     }
 
-    public SignInResponseDto signIn(SignInDto signInDto) throws NoSuchAlgorithmException {
+    public SignInResponseDto signIn(SignInDto signInDto) throws Exception {
         User user = userRepository.findByEmail(signInDto.getEmail());
 
         try {
             if (!user.getPassword().equals(hashPassword(signInDto.getPassword()))) {
                 throw new RuntimeException("Contraseña Incorrecta");
             }
-        } catch (NoSuchAlgorithmException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Token token = tokenService.getToken(user);

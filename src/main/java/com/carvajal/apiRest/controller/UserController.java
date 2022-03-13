@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.NoSuchAlgorithmException;
-
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -27,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/signin")
-    public SignInResponseDto signInDto(@RequestBody SignInDto signInDto) throws NoSuchAlgorithmException {
+    public SignInResponseDto signInDto(@RequestBody SignInDto signInDto) throws Exception {
         return userService.signIn(signInDto);
     }
 }
